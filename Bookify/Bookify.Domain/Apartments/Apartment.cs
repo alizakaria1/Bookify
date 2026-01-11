@@ -22,12 +22,12 @@ namespace Bookify.Domain.Apartments
             Amenities = amenities;
         }
 
-        public Name Name { get; set; }
-        public Description Description { get; set; }
-        public Address Address { get; set; } // this is a value object
-        public Money Price { get; set; }
-        public Money CleaningFee { get; set; }
-        public DateTime? LastBookedOnUtc { get; set; }
-        public List<Amenity> Amenities { get; set; } = new();
+        public Name Name { get; private set; } // the reason we are using private setters is because we don't want anyone to be able to change the vale of the property outside the class
+        public Description Description { get; private set; }
+        public Address Address { get; private set; } // this is a value object
+        public Money Price { get; private set; }
+        public Money CleaningFee { get; private set; }
+        public DateTime? LastBookedOnUtc { get; private set; }
+        public List<Amenity> Amenities { get; private set; } = new();
     }
 }
