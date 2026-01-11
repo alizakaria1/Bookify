@@ -1,0 +1,4 @@
+* in the apartment entity, we might ask why did we set the Name and Description as records (value objects) when we can just set them
+as strings ? The reason is that a string by itself doesn't represent anything. It can be empty, one character or anything. So better
+identify it, we can set it as a value object, in our case a record, and then we can add any conditions we want and manipulations like
+we did with the Currency which we can just initially set it to string but we didn't

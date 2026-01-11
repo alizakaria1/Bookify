@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="Notes.txt" />
+  </Folder>
   <Folder Name="/src/">
     <Project Path="Bookify.Domain/Bookify.Domain.csproj" />
   </Folder>
