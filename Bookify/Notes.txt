@@ -2,3 +2,8 @@
 as strings ? The reason is that a string by itself doesn't represent anything. It can be empty, one character or anything. So better
 identify it, we can set it as a value object, in our case a record, and then we can add any conditions we want and manipulations like
 we did with the Currency which we can just initially set it to string but we didn't
+
+* in the Entity class, we used MediatR to get, clear and raise domain events. 
+
+* when creating an entity, we use the factory method like the User class, where there is a private constructor, and a factory method like
+the create one. In that method we can do any side effects that don't belong to the constructor like the rasing an event
