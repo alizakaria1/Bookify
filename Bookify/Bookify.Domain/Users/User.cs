@@ -1,4 +1,5 @@
 ﻿using Bookify.Domain.Abstractions;
+using Bookify.Domain.Users.Events;
 
 namespace Bookify.Domain.Users
 {
@@ -18,6 +19,10 @@ namespace Bookify.Domain.Users
         public static User Create(FirstName firstName, LastName lastName, Email email)
         {
             var user = new User(Guid.NewGuid(), firstName, lastName, email);
+
+            // the reason we did this is now when we want to persist a user in the database, an event will be published,
+            // someone can subscribe to it and perform an operation async like sendind an email
+            user.RaiseDomainEvent(new UserCreatedDomainEvent(user.Id));
 
             return user;
         }
