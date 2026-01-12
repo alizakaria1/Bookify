@@ -28,7 +28,7 @@ namespace Bookify.Domain.Apartments
         public Address Address { get; private set; } // this is a value object
         public Money Price { get; private set; }
         public Money CleaningFee { get; private set; }
-        public DateTime? LastBookedOnUtc { get; private set; }
+        public DateTime? LastBookedOnUtc { get; internal set; } // we set it to internal to be able to set it's value in the Booking class
         public List<Amenity> Amenities { get; private set; } = new();
     }
 }
