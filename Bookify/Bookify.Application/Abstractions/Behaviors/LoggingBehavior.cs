@@ -1,7 +1,6 @@
 ﻿using Bookify.Domain.Abstractions;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using Serilog.Context;
 
 namespace Bookify.Application.Abstractions.Behaviors;
 
@@ -36,10 +35,11 @@ internal sealed class LoggingBehavior<TRequest, TResponse>
             }
             else
             {
-                using (LogContext.PushProperty("Error", result.Error, true))
-                {
-                    _logger.LogError("Request {RequestName} processed with error", requestName);
-                }
+                _logger.LogError("Request {RequestName} processed with error", requestName);
+                //using (LogContext.PushProperty("Error", result.Error, true))
+                //{
+                //    _logger.LogError("Request {RequestName} processed with error", requestName);
+                //}
             }
 
             return result;
