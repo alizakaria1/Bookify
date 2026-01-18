@@ -26,6 +26,6 @@ internal sealed class UserConfiguration : IEntityTypeConfiguration<User>
 
         builder.HasIndex(user => user.Email).IsUnique(); // this is adding an index to the email so that the email is unique
 
-        //builder.HasIndex(user => user.IdentityId).IsUnique();
+        builder.HasIndex(user => user.IdentityId).IsUnique();
     }
 }

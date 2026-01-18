@@ -53,17 +53,17 @@ public sealed class ApplicationDbContext : DbContext, IUnitOfWork
 
     private void AddDomainEventsAsOutboxMessages()
     {
-        var outboxMessages = ChangeTracker
-            .Entries<Entity>()
-            .Select(entry => entry.Entity)
-            .SelectMany(entity =>
-            {
-                IReadOnlyList<IDomainEvent> domainEvents = entity.GetDomainEvents();
+        //var outboxMessages = ChangeTracker
+        //    .Entries<Entity>()
+        //    .Select(entry => entry.Entity)
+        //    .SelectMany(entity =>
+        //    {
+        //        IReadOnlyList<IDomainEvent> domainEvents = entity.GetDomainEvents();
 
-                entity.ClearDomainEvents(); // it's important to clear the domain events because when we publish domain events we don't know what would the event contain
+        //        entity.ClearDomainEvents(); // it's important to clear the domain events because when we publish domain events we don't know what would the event contain
 
-                return domainEvents;
-            });
+        //        return domainEvents;
+        //    });
             //.Select(domainEvent => new OutboxMessage(
             //    Guid.NewGuid(),
             //    _dateTimeProvider.UtcNow,
@@ -71,7 +71,7 @@ public sealed class ApplicationDbContext : DbContext, IUnitOfWork
             //    JsonConvert.SerializeObject(domainEvent, JsonSerializerSettings)))
             //.ToList();
 
-        AddRange(outboxMessages);
+        //AddRange(outboxMessages);
     }
 
     //private async Task PublishDomainEventsAsync()
