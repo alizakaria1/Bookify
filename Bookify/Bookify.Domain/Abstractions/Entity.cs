@@ -7,6 +7,12 @@
         {
             Id = id;
         }
+
+        protected Entity()
+        {
+            
+        }
+
         public Guid Id { get; init; } // init means that when an entity is defined, the id is set for life
 
         public IReadOnlyList<IDomainEvent> GetDomainEvents() { return _domainEvents.ToList(); }

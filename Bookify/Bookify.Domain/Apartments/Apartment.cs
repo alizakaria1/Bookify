@@ -23,6 +23,11 @@ namespace Bookify.Domain.Apartments
             Amenities = amenities;
         }
 
+        public Apartment()
+        {
+            
+        }
+
         public Name Name { get; private set; } // the reason we are using private setters is because we don't want anyone to be able to change the vale of the property outside the class
         public Description Description { get; private set; }
         public Address Address { get; private set; } // this is a value object

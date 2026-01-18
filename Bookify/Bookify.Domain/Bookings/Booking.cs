@@ -31,9 +31,9 @@ namespace Bookify.Domain.Bookings
             CreatedOnUtc = createdOnUtc;
         }
 
-        //private Booking()
-        //{
-        //}
+        private Booking()
+        {
+        }
 
         public Guid ApartmentId { get; private set; }
 

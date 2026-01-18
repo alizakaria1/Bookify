@@ -3,9 +3,13 @@
     <File Path="Notes.txt" />
   </Folder>
   <Folder Name="/src/">
+    <Project Path="Bookify.Api/Bookify.Api.csproj" Id="84ffe2bc-951e-410a-8714-88b37100c588" />
     <Project Path="Bookify.Application/Bookify.Application.csproj" Id="f518fe5f-d2f4-43f5-b232-20fb41682060" />
     <Project Path="Bookify.Domain/Bookify.Domain.csproj" />
     <Project Path="Bookify.Infrastructure/Bookify.Infrastructure.csproj" Id="5f3a446c-47cc-48de-ac7d-4322ec77f8fa" />
   </Folder>
   <Folder Name="/test/" />
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
 </Solution>
