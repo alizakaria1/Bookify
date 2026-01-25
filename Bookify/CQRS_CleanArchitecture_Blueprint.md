@@ -680,3 +680,4 @@ When implementing a new feature (e.g., Apartments):
 
 This ensures dependencies flow correctly: outer layers depend on inner layers, never the reverse.
 
+

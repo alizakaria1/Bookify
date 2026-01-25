@@ -7,3 +7,7 @@ we did with the Currency which we can just initially set it to string but we did
 
 * when creating an entity, we use the factory method like the User class, where there is a private constructor, and a factory method like
 the create one. In that method we can do any side effects that don't belong to the constructor like the rasing an event
+
+* to modify claims in dotnet core, we can use the IClaimsTransformation interface which is build it dotnet
+
+* for the permissions, see the implementation of PermissionAuthorizationHandler

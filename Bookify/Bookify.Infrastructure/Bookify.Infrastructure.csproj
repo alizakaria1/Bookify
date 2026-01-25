@@ -24,9 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Configurations\" />
     <Folder Include="Data\" />
-    <Folder Include="Authentication\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
 

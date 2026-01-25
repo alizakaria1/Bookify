@@ -22,6 +22,7 @@ internal abstract class Repository<T>
             .FirstOrDefaultAsync(user => user.Id == id, cancellationToken);
     }
 
+    // we made it virtual so we can override it
     public virtual void Add(T entity)
     {
         DbContext.Add(entity);

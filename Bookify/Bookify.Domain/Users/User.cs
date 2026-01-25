@@ -8,6 +8,7 @@ namespace Bookify.Domain.Users
     // that don't naturllay belong into a constructor
     public sealed class User : Entity
     {
+        private readonly List<Role> _roles = new();
         private User(Guid id, FirstName firstName, LastName lastName, Email email)
         : base(id)
         {
@@ -26,6 +27,7 @@ namespace Bookify.Domain.Users
         public LastName LastName { get; private set; }
         public Email Email { get; private set; }
         public string IdentityId { get; private set; } = string.Empty;
+        public IReadOnlyCollection<Role> Roles => _roles.ToList();
 
         public static User Create(FirstName firstName, LastName lastName, Email email)
         {
@@ -34,6 +36,8 @@ namespace Bookify.Domain.Users
             // the reason we did this is now when we want to persist a user in the database, an event will be published,
             // someone can subscribe to it and perform an operation async like sendind an email
             user.RaiseDomainEvent(new UserCreatedDomainEvent(user.Id));
+
+            user._roles.Add(Role.Registered);
 
             return user;
         }
