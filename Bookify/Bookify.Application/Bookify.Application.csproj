@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <Folder Include="Abstractions\Data\" />
-    <Folder Include="Abstractions\Behaviors\" />
     <Folder Include="Abstractions\Authentication\" />
     <Folder Include="Users\UserLogin\" />
     <Folder Include="Users\RegisterUser\" />
