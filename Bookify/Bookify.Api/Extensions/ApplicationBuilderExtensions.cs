@@ -20,10 +20,10 @@ internal static class ApplicationBuilderExtensions
         app.UseMiddleware<ExceptionHandlingMiddleware>();
     }
 
-    //public static IApplicationBuilder UseRequestContextLogging(this IApplicationBuilder app)
-    //{
-    //    app.UseMiddleware<RequestContextLoggingMiddleware>();
+    public static IApplicationBuilder UseRequestContextLogging(this IApplicationBuilder app)
+    {
+        app.UseMiddleware<RequestContextLoggingMiddleware>();
 
-    //    return app;
-    //}
+        return app;
+    }
 }
