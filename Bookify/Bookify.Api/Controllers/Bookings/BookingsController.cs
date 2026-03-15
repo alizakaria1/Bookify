@@ -1,4 +1,5 @@
-﻿using Bookify.Application.Bookings.GetBooking;
+﻿using Asp.Versioning;
+using Bookify.Application.Bookings.GetBooking;
 using Bookify.Application.Bookings.ReserveBooking;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -6,7 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Bookify.Api.Controllers.Bookings
 {
-    [Route("api/bookings")]
+    [ApiVersion(ApiVersions.V1)]
+    [Route("api/v{version:apiVersion}/bookings")]
     [ApiController]
     [Authorize]
     public class BookingsController : ControllerBase
