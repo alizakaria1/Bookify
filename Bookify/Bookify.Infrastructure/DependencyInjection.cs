@@ -14,6 +14,7 @@ using Bookify.Infrastructure.Caching;
 using Bookify.Infrastructure.Clock;
 using Bookify.Infrastructure.Data;
 using Bookify.Infrastructure.Email;
+using Bookify.Infrastructure.Outbox;
 using Bookify.Infrastructure.Repositories;
 using Dapper;
 using Microsoft.AspNetCore.Authentication;
@@ -23,6 +24,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Quartz;
 
 namespace Bookify.Infrastructure;
 
@@ -159,12 +161,12 @@ public static class DependencyInjection
 
     private static void AddBackgroundJobs(IServiceCollection services, IConfiguration configuration)
     {
-        //services.Configure<OutboxOptions>(configuration.GetSection("Outbox"));
+        services.Configure<OutboxOptions>(configuration.GetSection("Outbox"));
 
-        //services.AddQuartz();
+        services.AddQuartz();
 
-        //services.AddQuartzHostedService(options => options.WaitForJobsToComplete = true);
+        services.AddQuartzHostedService(options => options.WaitForJobsToComplete = true);
 
-        //services.ConfigureOptions<ProcessOutboxMessagesJobSetup>();
+        services.ConfigureOptions<ProcessOutboxMessagesJobSetup>();
     }
 }

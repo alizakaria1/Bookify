@@ -1,6 +1,7 @@
 ﻿using Bookify.Application.Abstractions.Clock;
 using Bookify.Application.Exceptions;
 using Bookify.Domain.Abstractions;
+using Bookify.Infrastructure.Outbox;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
@@ -53,43 +54,24 @@ public sealed class ApplicationDbContext : DbContext, IUnitOfWork
 
     private void AddDomainEventsAsOutboxMessages()
     {
-        //var outboxMessages = ChangeTracker
-        //    .Entries<Entity>()
-        //    .Select(entry => entry.Entity)
-        //    .SelectMany(entity =>
-        //    {
-        //        IReadOnlyList<IDomainEvent> domainEvents = entity.GetDomainEvents();
+        var outboxMessages = ChangeTracker
+            .Entries<Entity>()
+            .Select(entry => entry.Entity)
+            .SelectMany(entity =>
+            {
+                IReadOnlyList<IDomainEvent> domainEvents = entity.GetDomainEvents();
 
-        //        entity.ClearDomainEvents(); // it's important to clear the domain events because when we publish domain events we don't know what would the event contain
+                entity.ClearDomainEvents(); // it's important to clear the domain events because when we publish domain events we don't know what would the event contain
 
-        //        return domainEvents;
-        //    });
-            //.Select(domainEvent => new OutboxMessage(
-            //    Guid.NewGuid(),
-            //    _dateTimeProvider.UtcNow,
-            //    domainEvent.GetType().Name,
-            //    JsonConvert.SerializeObject(domainEvent, JsonSerializerSettings)))
-            //.ToList();
+                return domainEvents;
+            })
+            .Select(domainEvent => new OutboxMessage(
+                Guid.NewGuid(),
+                _dateTimeProvider.UtcNow,
+                domainEvent.GetType().Name,
+                JsonConvert.SerializeObject(domainEvent, JsonSerializerSettings)))
+            .ToList();
 
-        //AddRange(outboxMessages);
+        AddRange(outboxMessages);
     }
-
-    //private async Task PublishDomainEventsAsync()
-    //{
-    //    var domainEvents = ChangeTracker.Entries<Entity>()
-    //        .Select(entry => entry.Entity)
-    //        .SelectMany(entity =>
-    //        {
-    //            var domainEvents = entity.GetDomainEvents();
-
-    //            entity.ClearDomainEvents();
-
-    //            return domainEvents;
-    //        }).toList();
-
-    //    foreach (var domainEvent in domainEvents)
-    //    {
-    //        await _publisher.Publish(domainEvent);
-    //    }
-    //}
 }
