@@ -133,10 +133,10 @@ public static class DependencyInjection
 
     private static void AddHealthChecks(IServiceCollection services, IConfiguration configuration)
     {
-        //services.AddHealthChecks()
-        //    .AddNpgSql(configuration.GetConnectionString("Database")!)
-        //    .AddRedis(configuration.GetConnectionString("Cache")!)
-        //    .AddUrlGroup(new Uri(configuration["KeyCloak:BaseUrl"]!), HttpMethod.Get, "keycloak");
+        services.AddHealthChecks()
+            .AddNpgSql(configuration.GetConnectionString("Database")!)
+            .AddRedis(configuration.GetConnectionString("Cache")!)
+            .AddUrlGroup(new Uri(configuration["KeyCloak:BaseUrl"]!), HttpMethod.Get, "keycloak");
     }
 
     private static void AddApiVersioning(IServiceCollection services)
