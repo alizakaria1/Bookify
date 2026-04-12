@@ -8,7 +8,11 @@
     <Project Path="Bookify.Domain/Bookify.Domain.csproj" />
     <Project Path="Bookify.Infrastructure/Bookify.Infrastructure.csproj" Id="5f3a446c-47cc-48de-ac7d-4322ec77f8fa" />
   </Folder>
-  <Folder Name="/test/" />
+  <Folder Name="/test/">
+    <Project Path="../Bookify.Application.IntegrationTests/Bookify.Application.IntegrationTests.csproj" Id="405b2bb2-2450-4a6d-ae47-c43f14367d8a" />
+    <Project Path="../Bookify.Application.UnitTests/Bookify.Application.UnitTests.csproj" Id="95286d61-d92d-4236-92a8-3dbfdef15c6e" />
+    <Project Path="../Bookify.Domain.UnitTests/Bookify.Domain.UnitTests.csproj" Id="386f664a-698d-4090-a0ea-66686843871a" />
+  </Folder>
   <Project Path="docker-compose.dcproj">
     <Build />
   </Project>
